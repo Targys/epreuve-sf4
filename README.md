@@ -4,7 +4,7 @@ Spécialisation Opérationnelle - Sf4 #5 - Epreuve
 ## Environnement Docker ##
 
 Ce projet nécessite un environnement Docker adapté. Vous pouvez utiliser l'image Docker "[mattrayner/lamp](https://hub.docker.com/r/mattrayner/lamp)". Une fois votre container crée, il vous faudra vérifier et corriger si nécessaire chacun des points suivants :
-  * votre *VirtualHost Apache* pointe bien sur le répertoire `public` de votre application (modification de ***DocumentRoot*** en `/var/www/html/public` en début du fichier `/etc/apache2/000-default`)
+  * votre *VirtualHost Apache* pointe bien sur le répertoire `public` de votre application (modification de ***DocumentRoot*** en `/var/www/html/public` en début du fichier `/etc/apache2/sites-available/000-default.conf`) : 
   * module *"rewrite"* activé sous Apache : `a2enmod rewrite && service apache2 reload` 
   * que le module "sqlite3" correspondant à votre version de PHP est bien installé. Par exemple pour une version PHP 7.4 : `apt update && apt install php7.4-sqlite3`
   * terminez les modifications des configurations en actualisant Apache : `service apache2 reload`
