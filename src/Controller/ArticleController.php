@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Category;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +30,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/new", name="article_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, CategoryRepository $categoryRepository): Response
     {
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
@@ -44,6 +46,7 @@ class ArticleController extends AbstractController
 
         return $this->render('article/new.html.twig', [
             'article' => $article,
+            //'category' => $categoryRepository->findAll(),
             'form' => $form->createView(),
         ]);
     }
